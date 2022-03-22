@@ -1,42 +1,73 @@
-// let numberOfFilms = +prompt('Сколько фильмов Вы уже посмотрели?');
+
+let numberOfFilms;
+
+function start() {
+  numberOfFilms = +prompt('Сколько фильмов Вы уже посмотрели?');
+
+  while(numberOfFilms == null || numberOfFilms == '' || isNaN(numberOfFilms)) {
+    numberOfFilms = +prompt('Сколько фильмов Вы уже посмотрели?');
+  }
+
+}
+start();
 
 let personalMovieDB = {
-// count: numberOfFilms,
+count: numberOfFilms,
 movies: {},
 actors: {},
 genres: [],
-privat: false,
+private: false,
 };
 
-//Задаем два раза вопросы
+
+function rememberFilms() {
+  //Задаем два раза вопросы урок 14
 for(let i = 0; i<2; i++) {
-  let firstQuestion = prompt('Один из последних просмотренных фильмов?');
-  // let secondQuestion = +prompt('На сколько вы оцениете его?');
-if(!firstQuestion || firstQuestion.length >= 5) {
-  firstQuestion = prompt('Один из последних просмотренных фильмов?');
+  let movieName = prompt('Один из последних просмотренных фильмов?');
+  let rateMovie = +prompt('На сколько вы оцениете его?');
+if(movieName != null && movieName != '' && rateMovie  != null && rateMovie != '' && movieName.length <15) {
+  personalMovieDB.movies[movieName] = rateMovie;
 } else {
-  
-  // personalMovieDB.movies[firstQuestion] = secondQuestion;
+  i--;
 }
 }
-// let firstQuestion; 
-// let secondQuestion;
-// for(let i = 0; i<2; i++) {
-//   do {
-//     firstQuestion = prompt('Один из последних просмотренных фильмов?');
-//     secondQuestion = +prompt('На сколько вы оцениете его?');
-//     personalMovieDB.movies[firstQuestion] = secondQuestion;
-//   } while(!firstQuestion || firstQuestion.length >5);
+}
+// rememberFilms();
+
+function detectPersonalLevel() {
+ if(personalMovieDB.count <10) {
+  console.log('Просмотрено меньше 10 кино');
+} else if (personalMovieDB.count >10 && personalMovieDB.count <30) {
+  console.log(`Просмотрено от 10 до 30 кино - а именно ${numberOfFilms}`); 
+}
+  else if (personalMovieDB.count >30) {
+console.log('Вы киноман!');
+} else {
+  console.log('Ошибка');
+}
+}
+// detectPersonalLevel();
+
+function showMyDB(private) {
+  if(private == false) {
+    console.log(personalMovieDB);
+  } else {
+    // если true - то не показываем
+    console.log('Объект закрыт для показа');
+  }
+  }
+// showMyDB(personalMovieDB.private);
+
+function writeGenres() {
+  // let num = 1;
+  for(let i=1; i<4; i++) {
+    //можно через push
+    // personalMovieDB.genres.push(prompt(`Ваш любимый жанр под номером ${i}`));
+    // или просто через индекс [i-1]
+    personalMovieDB.genres[i-1] = prompt(`Ваш любимый жанр под номером ${i}`);
+   }
   
-//   console.log(personalMovieDB); // movies: {Термик: '6', Кодзилла: '5'}
+}
+writeGenres();
 
-// }
-
-
-
-
-//  let firstQuestion = prompt('Один из последних просмотренных фильмов?');
-// if(!firstQuestion || firstQuestion.length >= 5) {
-//   firstQuestion = prompt('Один из последних просмотренных фильмов?');
-// }
-// console.log( firstQuestion.length);
+console.log(personalMovieDB);

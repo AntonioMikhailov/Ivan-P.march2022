@@ -9,19 +9,39 @@
 <body>
   
   <script>
-let i;
-for(let a = 0; a<2; a++) {
-  do {
- i = +prompt('Число');
- } while (i<3) 
-if(!i) { // если пустая строка или Esc (null) повторяем prompt
-  i = +prompt('Число');
-  }
+let obj = {
+  genres: [],
+  private: false,
 }
 
-
-
-
+let counter =0;
+const options  = {
+    name: 'test',
+    width: 1024,
+    height: 1024,
+    colors: {
+        border: 'black',
+        bg: 'red'
+    }
+};
+for (let key in options) {
+  if(typeof options[key] == 'object') {
+    for( let i in options[key]) {
+      console.log(`${i} и значение ${options[key][i]}`);
+      counter++
+    }
+    
+  } else {
+    console.log(`${key} и значение ${options[key]}`);
+    counter++
+  }
+  
+   
+}
+// console.log(Object.keys(options).length); // 4 
+//  console.log(counter); // 4 свойства
+ const {border, bg} = options.colors;
+console.log(border); // black
 
   </script>
 </body>
