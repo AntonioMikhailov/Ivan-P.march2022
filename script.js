@@ -1,4 +1,4 @@
-// let numberOfFilms = +prompt('Сколько фильмов Вы уже посмотрели?');ё
+// let numberOfFilms = +prompt('Сколько фильмов Вы уже посмотрели?');
 
 let personalMovieDB = {
 // count: numberOfFilms,
@@ -9,29 +9,34 @@ privat: false,
 };
 
 //Задаем два раза вопросы
-
+for(let i = 0; i<2; i++) {
   let firstQuestion = prompt('Один из последних просмотренных фильмов?');
-  let secondQuestion = +prompt('На сколько вы оцениете его?');
-  personalMovieDB.movies.firstQuestion = secondQuestion; // без квадратных скобок запишет
-  // идентификатор как firstQuestion а не как данные из Prompt
+  // let secondQuestion = +prompt('На сколько вы оцениете его?');
+if(!firstQuestion || firstQuestion.length >= 5) {
+  firstQuestion = prompt('Один из последних просмотренных фильмов?');
+} else {
+  
+  // personalMovieDB.movies[firstQuestion] = secondQuestion;
+}
+}
+// let firstQuestion; 
+// let secondQuestion;
+// for(let i = 0; i<2; i++) {
+//   do {
+//     firstQuestion = prompt('Один из последних просмотренных фильмов?');
+//     secondQuestion = +prompt('На сколько вы оцениете его?');
+//     personalMovieDB.movies[firstQuestion] = secondQuestion;
+//   } while(!firstQuestion || firstQuestion.length >5);
+  
+//   console.log(personalMovieDB); // movies: {Термик: '6', Кодзилла: '5'}
+
+// }
 
 
-console.log(personalMovieDB); // movies: {Термик: '6', Кодзилла: '5'}
 
-// var country = {
- 
-//   name: "Германия",
-//   language: "немецкий",
-//   capital:{
-   
-//       name: "Берлин",
-//       population: 3375000,
-//       year: 1237
-//   }
-// };
-// console.log("Столица: " + country.capital.name); // Берлин
-// console.log("Население: " + country["capital"]["population"]); // 3375000
-// console.log("Год основания: " + country.capital["year"]); // 1237
 
-// country.capital.cars = 123; // добавили свойство во вложенный объект
-// console.log(country.capital); // {name: 'Берлин', population: 3375000, year: 1237, cars: 123}
+//  let firstQuestion = prompt('Один из последних просмотренных фильмов?');
+// if(!firstQuestion || firstQuestion.length >= 5) {
+//   firstQuestion = prompt('Один из последних просмотренных фильмов?');
+// }
+// console.log( firstQuestion.length);
